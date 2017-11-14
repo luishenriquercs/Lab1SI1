@@ -1,0 +1,58 @@
+<html ng-app="SistemaDeMusica">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sistema de Musica</title>
+		<script src="angular/angular.js"></script>
+		<script src="angular/module.js"></script>
+		<script src="angular/appController.js"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/app.css"></link>
+	</head>
+
+	<body ng-controller="appController">
+		<h3 class="jumbotron" id="titulo">Sistema de Musica</h3>
+		<table class="jumbotron" id="artistabox" ng-show="artistas.length > 0">
+			<tr ng-repeat="artista in artistas | filter: criterioDeBusca">
+				<td>{{artista.nome}}</td>
+				<td><img ng-src="{{artista.imagem}}" width="150" height="150"></td>
+				<td><button id="button" class="btn btn-primary btn-block" ng-click="adicionaFavoritos(artista)">Adicionar aos Favoritos</button>
+				<button id="button" class="btn btn-primary btn-block" ng-click="adicionaFavoritos(artista)">Remover dos Favoritos</button></td>
+				<td>
+					<form class="jumbotron" name="notaForm">
+						<input id="button" class="form-control" type="text" ng-model="artista.nota" placeholder="Nota de 0 a 5" ng-required="true"/>
+						<button id="button" class="btn btn-primary btn-block" ng-click="adicionaNota(artista)" ng-disabled="notaForm.$invalid">Atribuir Nota </button>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<form class="jumbotron">
+			<li>Pesquise o seu artista:</li><br>
+			<input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Nome do artista"/>
+		</form>
+		<form class="jumbotron" name="artistaForm">
+			<li>Adicione o seu artista:</li><br>
+			<input class="form-control" type="text" ng-model="artista.nome" placeholder="Nome do Artista" ng-required="true"/>
+			<input class="form-control" type="url" ng-model="artista.imagem" placeholder="Imagem do Artista" ng-required="false"/>
+			<button class="btn btn-primary btn-block" ng-click="adicionaArtista(artista)" ng-disabled="artistaForm.$invalid">Adicionar Artista      </button>
+		</form>
+		<form class="jumbotron" name="musicaForm">
+			<li>Adicione a sua música:</li><br>
+			<input class="form-control" type="text" ng-model="musica.nome" placeholder="Nome da Música" ng-required="true"/>
+			<input class="form-control" type="text" ng-model="musica.artista" placeholder="Nome do Artista" ng-required="true"/>
+			<input class="form-control" type="text" ng-model="musica.album" placeholder="Nome do Álbum" ng-required="true"/>
+			<input class="form-control" type="number" ng-model="musica.anoLancamento" placeholder="Ano de Lançamento" ng-required="true"/>
+			<input class="form-control" type="number" ng-model="musica.duracao" placeholder="Duração" ng-required="true"/>
+			<button class="btn btn-primary btn-block" ng-click="adicionaMusica(musica)" ng-disabled="musicaForm.$invalid">Adicionar Música</button>
+		</form>
+
+		<form class="jumbotron" name="playListForm">
+			<li>Adicione a sua PlayList:</li><br>
+			<input class="form-control" type="text" ng-model="playlist.nome" placeholder="Nome da PlayList" ng-required="true"/>
+			<input class="form-control" type="text" ng-model="nomeMusica" placeholder="Nome da Música" ng-required="true"/>
+			<button class="btn btn-primary btn-block" ng-click="adicionaPlayList(playlist, nomeMusica)" ng-disabled="playListForm.$invalid">Adicionar PlayList </button>
+		</form>
+		
+	</body>
+
+
+</html>

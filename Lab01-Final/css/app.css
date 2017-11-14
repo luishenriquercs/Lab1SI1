@@ -1,0 +1,36 @@
+.jumbotron {
+	width: 400px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.form-control {
+	margin-bottom: 5px;
+}
+
+#titulo {
+	text-align: center;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1420px;
+}
+
+#artistabox {
+	width: 1000px;
+	float: right;
+	margin-top: 20px;
+	border-collapse: collapse;
+}
+
+#button {
+	width: 150px;
+	margin-right: auto;
+}
+
+#pl {
+	width: 1000px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
